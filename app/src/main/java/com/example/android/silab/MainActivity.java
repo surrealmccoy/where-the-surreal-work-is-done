@@ -219,6 +219,7 @@ public class MainActivity extends Activity {
 
     protected String makeEmojisedString(char[] input, List<String> selectedEmoji) {
 
+        /*
         int count = 0; //index for emoji pattern
 
         String space = "\u2004";  // unicode space
@@ -254,7 +255,55 @@ public class MainActivity extends Activity {
             } else {
                 displayDialog(R.string.error_no_map);
             }
-       }
+        }*/
+
+        String[] spaces =
+                {
+                        // Unicode whitespace characters
+                        "\u0020",
+                        "\u00A0",
+                        "\u1680",
+                        "\u180E",
+                        "\u2000",
+                        "\u2001",
+                        "\u2002",
+                        "\u2003",
+                        "\u2004",
+                        "\u2005",
+                        "\u2006",
+                        "\u2007",
+                        "\u2008",
+                        "\u2009",
+                        "\u200A",
+                        "\u200B",
+                        "\u202F",
+                        "\u205F",
+                        "\u3000",
+                        "\uFEFF"
+                };
+        String emojisedString="";
+        String space;
+        byte[] emojiArray = {(byte) 0xF0,(byte)0x9F,(byte)0x98,(byte)0x81};
+        String emoji="";
+        try {
+            emoji = new String(emojiArray, "UTF-8");
+        }catch(IOException e){
+            e.printStackTrace();
+        }
+        for(int a=0;a<spaces.length;a++){
+            space=spaces[a];
+            for(int b=0;b<4;b++){
+                String thisSpace="";
+                int count=0;
+                while(count<b) {
+                    thisSpace = thisSpace + space;
+                    count++;
+                }
+                emojisedString=emojisedString+thisSpace+emoji+"\n";
+            }
+            emojisedString=emojisedString+"\n";
+        }
+
         // return emojified string
         return emojisedString;
     }

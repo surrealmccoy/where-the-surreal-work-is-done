@@ -115,6 +115,7 @@ public class MainActivity extends Activity {
             renderView.setText(emojified);
             isRendered = true;
         }
+
     }
 
     // Share function

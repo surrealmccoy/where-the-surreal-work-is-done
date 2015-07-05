@@ -19,7 +19,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Hashtable;
-import java.util.List;
 
 /* The main activity for silab, renders layout, gets input, sets output etc.
  *
@@ -115,7 +114,6 @@ public class MainActivity extends Activity {
             renderView.setText(emojified);
             isRendered = true;
         }
-
     }
 
     // Share function
